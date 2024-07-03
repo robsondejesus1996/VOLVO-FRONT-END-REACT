@@ -8,7 +8,7 @@ export function useCars(){
         axios.get("http://localhost:3000/api/cars").then(res =>{
             setCars(res.data);
         })
-    },)
+    }, [])
 
     return {
         cars
