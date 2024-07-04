@@ -1,47 +1,62 @@
-import { Block, Card, CardContent, Flex, Spacer, Text, Row, Link } from "vcc-ui";
+import {
+  Block,
+  Card,
+  CardContent,
+  Flex,
+  Spacer,
+  Text,
+  Row,
+  Link,
+} from "vcc-ui";
 import { Car } from "./types/car.interface";
 import Image from "next/image";
 
-
-import styles from '../../public/css/CarCard.module.css';
+import styles from "../../public/css/CarCard.module.css";
 
 interface CardProps {
-  car: Car // minha tipagem de car
+  car: Car; // minha tipagem de car
 }
 
-export function CarCard({car }: CardProps) {
+export function CarCard({ car }: CardProps) {
   return (
     <div className={styles.cardWrapper}>
-     
-      <Text variant="bates" subStyle="emphasis">{car?.bodyType}</Text>
-        <Flex>
-          <Row>
-            <Text variant="amundsen">{car?.modelName}</Text>
-            <Text variant="bates" subStyle="inline-link">{car?.modelType}</Text>
+      <Text variant="bates" subStyle="emphasis">
+        {car?.bodyType}
+      </Text>
+      <Flex
+        extend={{
+          justifyContent: "flex-start",
+          alignItems: "center",
+          flexDirection: "row",
+          margin: 0,
+        }}
+      >
+        <Text variant="amundsen" extend={{ margin: 0, padding: 0 }}>
+          {car?.modelName}
+        </Text>
+        <Text variant="bates" extend={{ margin: 0 }} subStyle="inline-link">
+          {car?.modelType}
+        </Text>
+      </Flex>
+      <Spacer />
+      <Image src={car.imageUrl} alt={car.modelName} width="250" height="200" />
+      <Spacer />
 
-          </Row>
-        </Flex>
-        <Spacer />
-        <Image src={car.imageUrl} alt={car.modelName} width="200" height="150"/>
-        <Spacer />
+      <Flex
+        extend={{
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "row",
+        }}
+      >
+        <Link href="https://www.volvocars.com/" arrow="right">
+          SHOP
+        </Link>
 
-        <Flex extend={{
-          justifyContent: 'center',
-          alignItems: 'center', 
-          flexDirection: 'row'
-        }}>
-
-          
-            <Link href="https://www.volvocars.com/" arrow="right">
-              SHOP
-            </Link>
-
-            <Link href="https://www.volvocars.com/" arrow="right">
-              LEARN
-            </Link>
-          
-        </Flex>
-      
+        <Link href="https://www.volvocars.com/" arrow="right">
+          LEARN
+        </Link>
+      </Flex>
     </div>
   );
 }
