@@ -1,5 +1,7 @@
+import styles from '../../public/css/components/spacer.module.css';
+
 export function Spacer(){
     return (
-        <div></div>
+        <div className={styles.spacer}></div>
     )
 }
